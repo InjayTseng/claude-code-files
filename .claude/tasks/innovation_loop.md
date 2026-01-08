@@ -42,23 +42,12 @@
 - **回到 Step 5** 再次測試，直到通過。
 - *自我保護機制：如果嘗試修復超過 5 次仍失敗，放棄此功能，還原 git (git reset --hard)，並在 backlog 標記 [FAILED]，然後回到 Step 1。*
 
-### Step 7: The "3-to-2" Quality Gate (Conditional)
-檢查條件：如果 Iteration_Count 是 3 的倍數 (e.g., 3, 6, 9...)： 執行動作：暫停部署，進入 Critical Review Sub-routine (必須連續執行 2 次 Pass)：
-
-Pass 1 & Pass 2 執行內容：
-1. Review Plan: 重新審視 product_roadmap.md，確認當前修改是否偏離核心價值。
-2. Fix Critical Issues: 掃描專案中的 Warning 或潛在 Crash (不准開發新功能，只修 Bug)。
-3. Test Coverage: 針對 Step 4 新增的功能，補齊 Unit Test 或 UI Test，確保 Coverage 上升。
-4. Check: 確認上述修正無誤。 完成 Pass 1 後 -> 執行 Pass 2 -> 完成 Pass 2 後 -> 進入 Step 8。
-
-(如果不是 3 的倍數，直接跳過此步驟進入 Step 8)
-
-### Step 8: Deployment (The "Green" State)
+### Step 7: Deployment (The "Green" State)
 **如果測試通過：**
 - 執行 `git add .`
 - 執行 `git commit -m "feat(auto-agent): [Feature Name] - Implemented based on market research"`
 - 執行 `git push origin main`
 
-### Step 9: Restart
+### Step 8: Restart
 
 回到 Step 1，開始下一個循環。
