@@ -18,6 +18,10 @@ This repository provides a structured workflow for using Claude Code to autonomo
 │   │   ├── product_backlog.md # Feature backlog tracking
 │   │   └── innovation_loop.md # Autonomous development workflow
 │   └── settings.local.json    # Local Claude settings
+├── .github/
+│   └── workflows/
+│       ├── claude.yml              # @claude mention handler
+│       └── claude-code-review.yml  # Automatic PR review
 └── PRPs/
     ├── templates/
     │   └── prp_base.md        # Base PRP template
@@ -65,12 +69,39 @@ The `innovation_loop.md` task defines an autonomous workflow for continuous impr
 8. **Deployment** - Commit and push changes
 9. **Restart** - Begin next iteration
 
+## GitHub Actions
+
+### Claude Code Review (`claude-code-review.yml`)
+
+Automatically reviews pull requests when opened or synchronized. Reviews include:
+- Code quality and best practices
+- Potential bugs or issues
+- Performance considerations
+- Security concerns
+- Test coverage
+
+**Setup**: Add `CLAUDE_CODE_OAUTH_TOKEN` to your repository secrets.
+
+### Claude Mention Handler (`claude.yml`)
+
+Responds to `@claude` mentions in:
+- Issue comments
+- PR review comments
+- PR reviews
+- New issues
+
+This allows team members to ask Claude questions or request changes directly in GitHub.
+
+**Setup**: Add `CLAUDE_CODE_OAUTH_TOKEN` to your repository secrets.
+
 ## Usage
 
 1. Copy the `.claude/` directory to your project
-2. Customize the PRP template for your tech stack
-3. Use `/generate-prp` to create feature specifications
-4. Use `/execute-prp` to implement features
+2. Copy the `.github/` directory for GitHub Actions integration
+3. Add `CLAUDE_CODE_OAUTH_TOKEN` to your repository secrets
+4. Customize the PRP template for your tech stack
+5. Use `/generate-prp` to create feature specifications
+6. Use `/execute-prp` to implement features
 
 ## License
 
